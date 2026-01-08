@@ -35,19 +35,19 @@ function render() {
   COURSES.forEach(course => {
     const days = daysSince(data[course]);
 
+    let cls = "none";
+    if (days === 0) cls = "good";
+    else if (days === 1 || days === 2) cls = "warn";
+    else if (days >= 3) cls = "bad";
+
     app.innerHTML += `
-      <strong>${course}</strong><br>
-      Days since study: ${days}<br>
-      <button onclick="mark('${course}')">Studied today</button>
-      <hr>
+      <div class="course ${cls}">
+        <strong>${course}</strong><br>
+        Days since study: ${days}<br>
+        <button onclick="mark('${course}')">Studied today</button>
+      </div>
     `;
   });
 }
-
-function mark(course) {
-  data[course] = new Date().toISOString().split("T")[0];
-  save();
-  render();
-}
-
 render();
+
