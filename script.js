@@ -41,12 +41,13 @@ function render() {
     else if (days >= 3) cls = "bad";
 
     app.innerHTML += `
-      <div class="course ${cls}">
-        <strong>${course}</strong><br>
-        Days since study: ${days}<br>
-        <button onclick="mark('${course}')">Studied today</button>
-      </div>
-    `;
+  <div class="course ${cls}">
+    <strong>${course}</strong><br>
+    Days since study: ${days}<br>
+    <button onclick="mark('${course}')">Studied today</button>
+  </div>
+`;
+
   });
 }
 render();
